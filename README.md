@@ -26,3 +26,78 @@ MongoDB is a popular open-source NoSQL database designed for high performance, h
 
 **Summary:**  
 SQL databases are ideal for structured data and complex queries, while NoSQL databases like MongoDB are better suited for applications requiring scalability, flexibility, and handling of unstructured or rapidly changing data.
+
+## What is a Document and a Collection in MongoDB?
+
+- **Document:**  
+  A document is the basic unit of data in MongoDB, similar to a row in a relational database. Documents are stored in JSON-like format (BSON), allowing them to store complex, hierarchical data structures. Example:
+  ```json
+  {
+    "name": "Alice",
+    "age": 30,
+    "email": "alice@example.com",
+    "address": {
+      "city": "New York",
+      "zip": "10001"
+    }
+  }
+  ```
+
+- **Collection:**  
+  A collection is a group of MongoDB documents, similar to a table in relational databases. Collections do not enforce a schema, so documents within a collection can have different fields and structures.
+
+## Creating a Database and Collection in MongoDB
+
+### 1. Start the MongoDB Shell
+
+Open your terminal and run:
+```
+mongo
+```
+
+### 2. Create or Switch to a Database
+
+To create a new database (or switch to it if it already exists):
+```
+use myDatabase
+```
+This command switches to `myDatabase`. If it doesn't exist, MongoDB will create it when you first store data.
+
+### 3. Create a Collection
+
+Collections are created automatically when you insert the first document. You can also create one explicitly:
+```
+db.createCollection("myCollection")
+```
+
+### 4. Insert a Document into a Collection
+
+To insert a document:
+```
+db.myCollection.insertOne({ name: "Alice", age: 30 })
+```
+
+### 5. Show Databases and Collections
+
+- List all databases:
+  ```
+  show dbs
+  ```
+- List all collections in the current database:
+  ```
+  show collections
+  ```
+
+### 6. Drop (Delete) a Collection or Database
+
+- Drop a collection:
+  ```
+  db.myCollection.drop()
+  ```
+- Drop the current database:
+  ```
+  db.dropDatabase()
+  ```
+
+**Note:**  
+MongoDB commands can be run in the MongoDB shell (`mongo`) or in a MongoDB client like Compass or via drivers in your application code.
